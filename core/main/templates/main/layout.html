@@ -18,7 +18,8 @@
             <a href="{% url 'home' %}"><li><i class="fa-solid fa-house"></i> Home page</li></a>
             <a href="{% url 'about' %}"><li><i class="fa-solid fa-circle-info"></i> Page about us</li></a>
             <a href="{% url 'news_home' %}"><li><i class="fa-solid fa-folder"></i> news page</li></a>
-            <a href=""><li><i class="fa-solid fa-envelope"></i> Contacts</li></a>
+            <a href="{% url 'contacts' %}"><li><i class="fa-solid fa-envelope"></i> Contacts</li></a>
+            <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fa-solid fa-circle-nodes"></i></button>Add news</li></a>
         </ul>
     </aside>
     <main>
