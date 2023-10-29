@@ -18,7 +18,7 @@ class ArticlesForm(ModelForm):
             }),
             "date": DateTimeInput(attrs={
                 'class': 'from-control',
-                'placeholder': 'date of publication'
+                'placeholder': 'Date of bublicate'
             }),
             "full_text": Textarea(attrs={
                 'class': 'from-control',
