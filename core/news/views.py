@@ -2,6 +2,14 @@ from django.shortcuts import render, redirect
 from .models import Articles
 from .forms import ArticlesForm
 from django.views.generic import DetailView, UpdateView, DeleteView
+from rest_framework import generics
+from .serializers import ArticlesSerializer
+
+
+class ArticlesAPIView(generics.ListAPIView):
+    queryset = Articles.objects.all()
+    serializer_class = ArticlesSerializer
+
 
 
 def news_home(request):
