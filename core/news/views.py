@@ -1,3 +1,4 @@
+from django.forms import model_to_dict
 from django.shortcuts import render, redirect
 from .models import Articles
 from .forms import ArticlesForm
@@ -11,7 +12,22 @@ from .serializers import ArticlesSerializer
 
 class ArticlesAPIView(APIView):
     def get(self, request):
-        return Response({'title': 'Ford RS200'})
+        w = Articles.objects.all()
+        return Response({'posts': ArticlesSerializer(w, many=True).data})
+
+    def post(self, request):
+        serializer = ArticlesSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+
+        post_new = Articles.objects.create(
+            title=request.data['title'],
+            anons=request.data['anons'],
+            full_text=request.data['full_text'],
+            them_id=request.data['them_id']
+        )
+
+        return Response({'post': model_to_dict(post_new)})
 
 #class ArticlesAPIView(generics.ListAPIView):
     #queryset = Articles.objects.all()
