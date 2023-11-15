@@ -2,10 +2,10 @@ from django.db import models
 
 
 class Articles(models.Model):
-    title = models.CharField('Name', max_length=255)
-    anons = models.CharField('Anons', max_length=250)
+    title = models.CharField(max_length=255)
+    anons = models.CharField(max_length=250)
     full_text = models.TextField(blank=True)
-    date = models.DateTimeField('Data publication')
+    date = models.DateTimeField()
     them = models.ForeignKey('category', on_delete=models.PROTECT, null=True)
 
     def __str__ (self):

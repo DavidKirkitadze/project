@@ -26,17 +26,13 @@ class ArticlesAPIView(APIView):
             full_text=request.data['full_text'],
             them_id=request.data['them_id']
         )
-
-        return Response({'post': model_to_dict(post_new)})
-
-#class ArticlesAPIView(generics.ListAPIView):
-    #queryset = Articles.objects.all()
-    #serializer_class = ArticlesSerializer
+    
+        return Response({'post': ArticlesSerializer(post_new).data})
 
 
 
 def news_home(request):
-    news = Articles.objects.order_by('-date')
+    news = Articles.objects.order_by("-date")
     return render(request, 'news/news_home.html', {'news': news})
 
 

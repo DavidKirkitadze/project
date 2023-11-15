@@ -10,5 +10,5 @@ class ArticlesSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=255)
     anons = serializers.CharField()
     full_text = serializers.CharField()
-    date = serializers.DateTimeField(read_only=True)
+    date = serializers.DateTimeField()
     them_id = serializers.IntegerField()
